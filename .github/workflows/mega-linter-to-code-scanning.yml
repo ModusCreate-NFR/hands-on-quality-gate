@@ -58,6 +58,9 @@ jobs:
           # Enable SARIF report generation, Not all linter support SARIF
           SARIF_REPORTER: true 
 
+      - name: Show jscpd.json content
+        run: cat /action/lib/.automation/.jscpd.json
+
       # Upload MegaLinter artifacts
       - name: Archive production artifacts
         if: success() || failure()
