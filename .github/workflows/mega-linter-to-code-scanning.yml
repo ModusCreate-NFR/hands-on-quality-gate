@@ -7,21 +7,6 @@ on:
   pull_request:
     branches: [main]
 
-# Mega linter can try to automatically fix the issues 
-# If you want to apply fixes, you need to uncomment the following environment variables
-env: 
-  # Apply linter fixes configuration
-
-  # When active, it will try to apply fixes
-  # When active, APPLY_FIXES must also be defined as environment variable
-  APPLY_FIXES: all 
-
-  # Decide which event triggers application of fixes in a commit or a PR (pull_request, push, all)
-  APPLY_FIXES_EVENT: pull_request 
-
-  # If APPLY_FIXES is used, defines if the fixes are directly committed (commit) or posted in a PR (pull_request)
-  APPLY_FIXES_MODE: commit 
-
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
   cancel-in-progress: true
@@ -66,10 +51,9 @@ jobs:
 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-          # ADD YOUR CUSTOM ENV VARIABLES HERE OR DEFINE THEM IN A FILE .mega-linter.yml AT THE ROOT OF YOUR REPOSITORY
-          
-          # Uncomment to disable copy-paste and spell checks
-          # DISABLE: COPYPASTE,SPELL 
+          ENABLE_LINTERS: COPYPASTE_JSCPD 
+
+          COPYPASTE_JSCPD_ARGUMENTS: "--threshold=0"
           
           # Enable SARIF report generation, Not all linter support SARIF
           SARIF_REPORTER: true 
