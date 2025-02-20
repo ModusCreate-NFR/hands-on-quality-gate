@@ -16,3 +16,6 @@ function add(a, b) {
 
 const result = add(  5,3 )
 console.log(result)
+
+if(true) 
+console.log("This is an unbraced if statement")
