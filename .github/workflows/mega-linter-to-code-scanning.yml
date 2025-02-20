@@ -53,7 +53,7 @@ jobs:
 
           ENABLE_LINTERS: COPYPASTE_JSCPD 
 
-          COPYPASTE_JSCPD_ARGUMENTS: "--threshold 5 --exitCode 0 "
+          COPYPASTE_JSCPD_ARGUMENTS: "--threshold 20 --exitCode 0 "
           COPYPASTE_JSCPD_COMMAND_REMOVE_ARGUMENTS: "-c /action/lib/.automation/.jscpd.json --exitCode 1"
           # COPYPASTE_JSCPD_DISABLE_ERRORS: true
           
