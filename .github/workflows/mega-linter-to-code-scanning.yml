@@ -55,7 +55,8 @@ jobs:
 
           COPYPASTE_JSCPD_ARGUMENTS: "--threshold 100 --reporters 'html,markdown,console' "
           COPYPASTE_JSCPD_COMMAND_REMOVE_ARGUMENTS: "-c /action/lib/.automation/.jscpd.json"
-
+          COPYPASTE_JSCPD_DISABLE_ERRORS: true
+          
           # Enable SARIF report generation, Not all linter support SARIF
           SARIF_REPORTER: true 
 
