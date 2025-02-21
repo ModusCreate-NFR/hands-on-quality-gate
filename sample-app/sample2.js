@@ -19,4 +19,3 @@ console.log(result)
 
 if(true) 
 console.log("This is an unbraced if statement")
-
