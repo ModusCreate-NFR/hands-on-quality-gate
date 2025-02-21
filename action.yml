@@ -28,7 +28,7 @@ jobs:
           node-version: '20'
 
       - name: Run JSCPD
-        run: jscpd --reporters console,markdown,sarif --output report --threshold ${{ inputs.threshold }}
+        run: jscpd --reporters console,markdown,sarif --output report --threshold ${{ github.context.inputs.threshold }}
 
       - name: Upload JSCPD Report
         if: success() || failure()
@@ -47,4 +47,4 @@ jobs:
       - name: Invoke JSCPD Action for Testing
         uses: ./.github/workflows/jscpd-action.yml
         with:
-          threshold: ${{ inputs.threshold }}
+          threshold: ${{ github.context.inputs.threshold }}
