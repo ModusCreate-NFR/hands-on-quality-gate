@@ -1,3 +1,4 @@
+---
 name: JSCPD Code Duplication Check
 
 on:
@@ -46,9 +47,9 @@ jobs:
           file-path: report/jscpd-report.md
           comment-tag: jscpd-bot
 
-      # Upload MegaLinter scan results to GitHub Security tab
-      - name: Upload MegaLinter scan results to GitHub Security tab
-        if: success() 
+      # Upload scan results to GitHub Security tab
+      - name: Upload jspcd scan results to GitHub Security tab
+        if: success()
         uses: github/codeql-action/upload-sarif@v3
         with:
             sarif_file: 'report/jscpd-sarif.json'
