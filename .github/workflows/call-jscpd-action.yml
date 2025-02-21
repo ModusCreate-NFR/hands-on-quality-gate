@@ -1,13 +1,6 @@
 name: Call JSCPD Action
 
-permissions:
-  actions: read
-  checks: write
-  contents: read
-  id-token: read
-  issues: read
-  pull-requests: write
-  statuses: read
+
 on:
   push:
     branches:
@@ -20,6 +13,14 @@ jobs:
   call-jscpd-action:
     name: Call JSCPD Action
     runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      checks: write
+      contents: read
+      id-token: read
+      issues: read
+      pull-requests: write
+      statuses: read
 
     steps:
       - name: Checkout repository
