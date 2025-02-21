@@ -24,10 +24,10 @@ jobs:
           node-version: '20'
 
       - name: Install JSCPD
-        run: npm install -g jscpd @jscpd/md-reporter
+        run: npm install -g jscpd @jscpd/md-reporter @jscpd/sarif-reporter
 
       - name: Run JSCPD
-        run: jscpd --reporters console,md --output report --threshold 5
+        run: jscpd --reporters console,markdown --output report --threshold 5
         continue-on-error: true
 
       - name: Upload JSCPD Report
