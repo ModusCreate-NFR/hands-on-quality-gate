@@ -12,12 +12,6 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  jscpd:
-    name: JSCPD
-    uses: ./.github/workflows/jscpd.yml
-    with:
-      threshold: 2
-
   megalinter:
     name: MegaLinter
     runs-on: ubuntu-latest

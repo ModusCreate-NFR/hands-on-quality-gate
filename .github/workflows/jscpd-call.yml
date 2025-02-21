@@ -1,0 +1,12 @@
+name: JSCPD Code Duplication Check
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  jscpd:
+    name: JSCPD
+    uses: ./.github/workflows/jscpd.yml
+    with:
+      threshold: 2
