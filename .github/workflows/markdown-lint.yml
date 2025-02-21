@@ -1,13 +1,6 @@
 name: Markdown Lint
 
-permissions:
-  actions: read
-  checks: write
-  contents: read
-  id-token: read
-  issues: read
-  pull-requests: write
-  statuses: read
+
   
 on:
   push:
@@ -21,6 +14,14 @@ jobs:
   markdown-lint:
     name: Markdown Lint
     runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      checks: write
+      contents: read
+      id-token: read
+      issues: read
+      pull-requests: write
+      statuses: read
 
     steps:
       - name: Checkout repository
