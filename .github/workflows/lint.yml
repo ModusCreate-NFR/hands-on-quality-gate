@@ -1,6 +1,6 @@
 # MegaLinter GitHub Action configuration file
 # More info at https://megalinter.io
-name: MegaLinter
+name: Lint
 
 on:
   # Trigger mega-linter at pull request. 
@@ -12,6 +12,12 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  jscpd:
+    name: JSCPD
+    uses: ./.github/workflows/jscpd.yml
+    with:
+      threshold: 2
+
   megalinter:
     name: MegaLinter
     runs-on: ubuntu-latest
@@ -104,9 +110,3 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           branch: ${{ github.event.pull_request.head.ref || github.head_ref || github.ref }}
-
-  jscpd:
-    name: JSCPD
-    uses: ./.github/workflows/jscpd.yml
-    with:
-      threshold: 2

@@ -1,9 +1,12 @@
 name: JSCPD Code Duplication Check
 
 on:
-  pull_request:
-    branches:
-      - main
+  workflow_call:
+    inputs:
+      threshold:
+        required: false
+        type: number
+        default: 2
 
 jobs:
   jscpd:
@@ -27,7 +30,7 @@ jobs:
         run: npm install -g jscpd
 
       - name: Run JSCPD
-        run: jscpd --reporters console,markdown,sarif --output report --threshold 2
+        run: jscpd --reporters console,markdown,sarif --output report --threshold ${{ inputs.threshold }}
 
       - name: Upload JSCPD Report
         if: success() || failure()
