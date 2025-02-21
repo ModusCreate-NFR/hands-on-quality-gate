@@ -32,6 +32,12 @@ jobs:
 
 This example sets the threshold to `5`. You can adjust the threshold value as needed.
 
+## Development
+
+Note that the `node_modules` directory is vendored in the repository intentionally
+to make running the action faster. If you update the version of `jscpd` in `package.json`
+you must do an `npm install` and commit the updated `node_modules` directory.
+
 ## Legal
 
 Copyright 2025 Modus Create. [MIT Licensed](LICENSE).
