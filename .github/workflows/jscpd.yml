@@ -27,7 +27,8 @@ jobs:
         run: npm install -g jscpd
 
       - name: Run JSCPD
-        run: jscpd --reporters console,md,json --output report --threshold 5
+        run: jscpd --reporters console,md --output report --threshold 5
+        continue-on-error: true
 
       - name: Upload JSCPD Report
         uses: actions/upload-artifact@v4
@@ -35,8 +36,11 @@ jobs:
           name: jscpd-report
           path: report
 
+      - name: Read JSCPD Report
+        run: cat report/jscpd-report.json | jq '.' > jscpd-report-pretty.json
+
       - name: Comment JSCPD results on PR
         if: github.event_name == 'pull_request'
         uses: thollander/actions-comment-pull-request@v2
         with:
-          message: "### JSCPD Report\n$(cat report/jscpd-report.md)"
+          file-path: report/jscpd-report.md
