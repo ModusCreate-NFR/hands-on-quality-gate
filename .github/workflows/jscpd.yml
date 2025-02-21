@@ -24,7 +24,7 @@ jobs:
           node-version: '20'
 
       - name: Install JSCPD
-        run: npm install -g jscpd @jscpd/md-reporter @jscpd/sarif-reporter
+        run: npm install -g jscpd @jscpd/sarif-reporter
 
       - name: Run JSCPD
         run: jscpd --reporters console,markdown --output report --threshold 5
