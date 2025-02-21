@@ -10,7 +10,7 @@ jobs:
     name: Run JSCPD
     runs-on: ubuntu-latest
 
-     permissions:
+    permissions:
       contents: write
       pull-requests: write
 
