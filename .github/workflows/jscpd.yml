@@ -1,9 +1,13 @@
+---
 name: JSCPD Code Duplication Check
 
 on:
-  pull_request:
-    branches:
-      - main
+  workflow_call:
+    inputs:
+      threshold:
+        required: false
+        type: number
+        default: 2
 
 jobs:
   jscpd:
@@ -11,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-      contents: write
+      contents: read
       pull-requests: write
 
     steps:
@@ -27,7 +31,7 @@ jobs:
         run: npm install -g jscpd
 
       - name: Run JSCPD
-        run: jscpd --reporters console,markdown,sarif --output report --threshold 2
+        run: jscpd --reporters console,markdown,sarif --output report --threshold ${{ inputs.threshold }}
 
       - name: Upload JSCPD Report
         if: success() || failure()
@@ -43,9 +47,9 @@ jobs:
           file-path: report/jscpd-report.md
           comment-tag: jscpd-bot
 
-      # Upload MegaLinter scan results to GitHub Security tab
-      - name: Upload MegaLinter scan results to GitHub Security tab
-        if: success() 
+      # Upload scan results to GitHub Security tab
+      - name: Upload jspcd scan results to GitHub Security tab
+        if: success()
         uses: github/codeql-action/upload-sarif@v3
         with:
             sarif_file: 'report/jscpd-sarif.json'
