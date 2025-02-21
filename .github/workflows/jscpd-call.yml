@@ -1,3 +1,4 @@
+---
 name: JSCPD Code Duplication Check
 
 on:
@@ -10,3 +11,5 @@ jobs:
     uses: ./.github/workflows/jscpd.yml
     with:
       threshold: 2
+    permissions:
+      pull-requests: write
