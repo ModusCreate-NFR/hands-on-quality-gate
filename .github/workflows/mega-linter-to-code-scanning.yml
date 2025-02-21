@@ -1,9 +1,10 @@
+---
 # MegaLinter GitHub Action configuration file
 # More info at https://megalinter.io
 name: MegaLinter
 
 on:
-  # Trigger mega-linter at pull request. 
+  # Trigger mega-linter at pull request.
   pull_request:
     branches: [main]
 
@@ -16,7 +17,7 @@ jobs:
     name: MegaLinter
     runs-on: ubuntu-latest
 
-    # Give the default GITHUB_TOKEN write permission to commit and push, comment issues, post new PR and create code scannning alerts 
+    # Give the default GITHUB_TOKEN write permission to commit and push, comment issues, post new PR and create code scannning alerts
     permissions:
       # Remove the ones you do not need
       contents: write
@@ -32,7 +33,7 @@ jobs:
           token: ${{ secrets.PAT || secrets.GITHUB_TOKEN }}
 
           # If you use VALIDATE_ALL_CODEBASE = true, you can remove this line to improve performances
-          fetch-depth: 0 
+          fetch-depth: 0
 
       # MegaLinter
       - name: MegaLinter
@@ -40,25 +41,25 @@ jobs:
         # You can override MegaLinter flavor used to have faster performances
         # More info at https://megalinter.io/flavors/
         uses: oxsecurity/megalinter/flavors/ci_light@v8.4.0
-        
+
         # All available variables are described in documentation
         # https://megalinter.io/configuration/
         env:
-        
-          # Validates all source when push on main, else just the git diff with main. 
+
+          # Validates all source when push on main, else just the git diff with main.
           # Override with true if you always want to lint all sources
-          VALIDATE_ALL_CODEBASE: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }} 
+          VALIDATE_ALL_CODEBASE: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
 
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-          ENABLE_LINTERS: COPYPASTE_JSCPD 
+          ENABLE_LINTERS: COPYPASTE_JSCPD
 
           COPYPASTE_JSCPD_ARGUMENTS: "--threshold 20 --exitCode 0 "
           COPYPASTE_JSCPD_COMMAND_REMOVE_ARGUMENTS: "-c /action/lib/.automation/.jscpd.json --exitCode 1"
           # COPYPASTE_JSCPD_DISABLE_ERRORS: true
-          
+
           # Enable SARIF report generation, Not all linter support SARIF
-          SARIF_REPORTER: true 
+          SARIF_REPORTER: true
 
       # Upload MegaLinter artifacts
       - name: Archive production artifacts
@@ -69,7 +70,7 @@ jobs:
           path: |
             megalinter-reports
             mega-linter.log
-      
+
       # Upload MegaLinter scan results to GitHub Security tab
       # - name: Upload MegaLinter scan results to GitHub Security tab
       #  if: success() || failure()
