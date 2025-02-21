@@ -27,7 +27,7 @@ jobs:
         run: npm install -g jscpd
 
       - name: Run JSCPD
-        run: jscpd --reporters console,markdown,sarif --output report --threshold 20
+        run: jscpd --reporters console,markdown,sarif --output report --threshold 5
 
       - name: Upload JSCPD Report
         if: success() || failure()
