@@ -1,6 +1,6 @@
 # MegaLinter GitHub Action configuration file
 # More info at https://megalinter.io
-name: Lint
+name: MegaLinter
 
 on:
   # Trigger mega-linter at pull request. 
