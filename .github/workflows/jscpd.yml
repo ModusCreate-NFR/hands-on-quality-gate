@@ -41,6 +41,7 @@ jobs:
         uses: thollander/actions-comment-pull-request@v3
         with:
           file-path: report/jscpd-report.md
+          comment-tag: jscpd-bot
 
       # Upload MegaLinter scan results to GitHub Security tab
       - name: Upload MegaLinter scan results to GitHub Security tab
