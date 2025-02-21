@@ -1,5 +1,5 @@
 ---
-name: Call JSCPD Action
+name: JSCPD
 
 on:
   push:
@@ -15,7 +15,7 @@ permissions:
 
 jobs:
   call-jscpd-action:
-    name: Call JSCPD Action
+    name: Lint: Cut and Paste Detector
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
