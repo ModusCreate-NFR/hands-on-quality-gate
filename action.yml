@@ -1,4 +1,6 @@
-name: JSCPD Code Duplication Check
+---
+name: Duplicated Code Check
+description: 'Check for code duplication using JSCPD'
 
 inputs:
   threshold:
@@ -6,11 +8,6 @@ inputs:
     required: true
     default: '2'
     type: string
-
-outputs:
-  duplicate-files:
-    description: 'Number of duplicates found by JSCPD'
-    value: ${{ steps.jscpd.outputs.duplicates }}
 
 runs:
   using: 'composite'
