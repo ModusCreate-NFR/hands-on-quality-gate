@@ -1,6 +1,10 @@
 # JSCPD Code Duplication Check GitHub Action
 
-This GitHub Action runs JSCPD (JavaScript Copy/Paste Detector) to check for code duplication in your project. It generates reports in console, markdown, and SARIF formats and uploads them as artifacts. Additionally, it comments the results on the pull request.
+This GitHub Action runs JSCPD (JavaScript Copy/Paste Detector) to check for 
+code duplication in your project. It generates reports in console, markdown, 
+and SARIF formats and uploads them as artifacts.
+
+Additionally, it comments the results on the pull request.
 
 ## Inputs
 
