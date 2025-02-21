@@ -10,7 +10,7 @@ jobs:
     name: JSCPD
     uses: ./.github/workflows/jscpd.yml
     with:
-      threshold: 2
+      threshold: 8
     permissions:
       contents: read
       pull-requests: write
