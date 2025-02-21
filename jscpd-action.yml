@@ -27,9 +27,6 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install JSCPD
-        run: npm install -g jscpd
-
       - name: Run JSCPD
         run: jscpd --reporters console,markdown,sarif --output report --threshold ${{ inputs.threshold }}
 
