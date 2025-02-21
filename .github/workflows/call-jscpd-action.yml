@@ -15,7 +15,7 @@ permissions:
 
 jobs:
   call-jscpd-action:
-    name: Lint: Cut and Paste Detector
+    name: "Lint: Cut and Paste Detector"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
